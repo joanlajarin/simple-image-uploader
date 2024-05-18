@@ -10,10 +10,10 @@ export function ToggleButton() {
 
     return(
         <button 
-            className="rounded-md p-[12px] border border-[#E5E7EB]"
+            className={`rounded-md p-[12px] border ${darkMode ? 'bg-[#212936] border-[#4D5562]' : 'bg-[#FFFFFF] border-[#E5E7EB]'}`}
             onClick={toggleDarkMode}
         >
-            <img src={ darkMode ? sunImg : moonImg }></img>
+            <img className='size-[30px]' src={ darkMode ? sunImg : moonImg }></img>
         </button>
     )
 }   

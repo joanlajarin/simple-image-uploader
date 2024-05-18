@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 html, body, #root {
-  font-family: "Outfit", sans-serif;
+  font-family: "Inter", sans-serif;
   height: 100%;
 }
 
 html.dark {
-  background-color: #191B1F;
+  background-color: #121826;
   color: #FEF7EE;
 }
 
 html.light {
-  background-color: #FEF7EE;
-  color: #191B1F;
+  background-color: #FFFFFF;
+  color: #121826;
 }

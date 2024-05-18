@@ -11,7 +11,7 @@ export function NavBar() {
 
 
     return(
-        <div className="flex justify-between px-[72px] py-[16px] border-b border-[#E5E7EB] items-center">
+        <div className={`flex justify-between px-[72px] py-[16px] border-b ${darkMode ?  'border-[#4D5562]' : 'border-[#E5E7EB]' }  items-center`}>
             <img className='h-[35px]' src={darkMode ? logoDarkImg : logoImg }></img>
             <ToggleButton/>
         </div>
