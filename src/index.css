@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  font-family: "Outfit", sans-serif;
+  height: 100%;
+}
+
+html.dark {
+  background-color: #191B1F;
+  color: #FEF7EE;
+}
+
+html.light {
+  background-color: #FEF7EE;
+  color: #191B1F;
+}
