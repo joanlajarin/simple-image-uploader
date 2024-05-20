@@ -32,17 +32,16 @@ export function DragAndDropContainer({showImg}) {
           {...getRootProps()}  
         >
         <input {...getInputProps()}/>
-            <button 
+            <div 
                 className={`rounded-md border-2 ${darkMode ? 'border-[#4D5562]': 'border-[#E5E7EB]'} 
                 border-dashed py-[112px] w-full`}
-                onClick={handleUpload}
             >
                 <div className="flex flex-col items-center">
                     <img className='size-[30px] mb-[20px]' src={arrowImg}></img>
                     <span className='text-[14px] font-medium  mb-[8px]'>Drag & drop a file or <span className='font-light text-[#3662E3]'>browse files</span></span>
                     <span className='text-[14px] font-light'>JPG, PNG or GIF - Max file size 2MB</span>
                 </div>
-            </button>
+            </div>
         </section>
     )
 }
