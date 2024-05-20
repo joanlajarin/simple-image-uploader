@@ -9,20 +9,15 @@ import { LoadStateContext } from "../context/LoadState"
 export function SimpleImageUploaderApp() {
 
     const {loading} = useContext(LoadStateContext)
-    const [imgToShow, setImgToShow] = useState("")
-    
-    const showImg = (imgRes) => {
-        setImgToShow(imgRes)
-    }
 
     return(<>
             <div className="w-full h-full flex flex-col">
                 <NavBar/>
                 {
                     loading === "" ?   
-                    <DragAndDropContainer showImg={showImg}/>
+                    <DragAndDropContainer />
                     :  loading === true ?  <UploadLoader/>
-                    :  <UploadSucces imgToShow={imgToShow}/> 
+                    :  <UploadSucces /> 
                 }
             </div>
     </>)

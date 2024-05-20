@@ -1,31 +1,34 @@
 import arrowImg from '/images/exit.svg'
 import { DarkModeContext } from "../context/DarkMode"
 import { LoadStateContext } from "../context/LoadState"
-import { useContext,useState } from 'react'
+import { useContext,useEffect,useState } from 'react'
 import { useDropzone } from 'react-dropzone';
+import { postImg } from '../services/postImg';
 
+export function DragAndDropContainer() {
 
-export function DragAndDropContainer({showImg}) {
 
     const {darkMode}  = useContext(DarkModeContext)
     const { changeLoading }  = useContext(LoadStateContext)
-
-    const [selectedFile, setSelectedFile] = useState(null)
+    const { postToDb } = postImg()
 
     const onDrop = (acceptedFiles) => {
       changeLoading(true)
       const file = acceptedFiles[0]
       const reader = new FileReader()
       reader.onloadend = () => {
-        setPreviewSrc(reader.result)
-        showImg(reader.result)
-        changeLoading(false)
+        handleUpload(reader.result)
       }
       reader.readAsDataURL(file)
     }
 
     const { getRootProps, getInputProps } = useDropzone({ onDrop })
     
+    const handleUpload = async (selectedFile) => {
+      if (!selectedFile) return
+      postToDb(selectedFile)
+    }
+
     return (
         <section 
           className={`${darkMode ? 'bg-[#212936]': 'bg-[#F9FAFBCC] shadow-xl' } rounded-md p-[8px] w-[540px]  mx-auto my-auto`}
