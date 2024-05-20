@@ -1,13 +1,16 @@
 import './App.css'
 import { SimpleImageUploaderApp } from './components/SimpleImageUploaderApp'
 import { DarkModeProvider } from './context/DarkMode'
+import { LoadStateProvider } from './context/LoadState'
 
 function App() {
 
   return (
     <>
     <DarkModeProvider>
-      <SimpleImageUploaderApp/>
+      <LoadStateProvider>
+        <SimpleImageUploaderApp/>
+      </LoadStateProvider>
     </DarkModeProvider>
     </>
   )
