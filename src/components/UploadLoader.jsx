@@ -1,11 +1,9 @@
 import { DarkModeContext } from "../context/DarkMode"
 import { useContext } from 'react'
 
-
 export function UploadLoader() {
 
     const {darkMode}  = useContext(DarkModeContext)
-
 
     return( 
         <section className={`${darkMode ? 'bg-[#212936]': 'bg-[#F9FAFBCC] shadow-xl' } 

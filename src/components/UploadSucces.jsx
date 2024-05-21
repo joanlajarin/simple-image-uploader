@@ -1,9 +1,9 @@
 import { DarkModeContext } from "../context/DarkMode"
 import { PhotoContext } from "../context/Photo"
-
 import { useContext } from 'react'
 import donwloadImg from '/images/download.svg'
 import linkImg from '/images/Link.svg'
+import { toast } from 'sonner'
 
 
 export function UploadSucces() {
@@ -12,10 +12,34 @@ export function UploadSucces() {
     const {urlPhoto}  = useContext(PhotoContext)
 
     const shareImg = () => {
-
+        navigator.clipboard.writeText(urlPhoto)
+        toast.success('Link copied to clipboard')
     }
-    const downloadImg = () => {
+    const downloadImg = async () => {
 
+        const getPhotoUrl = `http://localhost:5000/photo?url=${encodeURIComponent(urlPhoto)}`
+          
+        const parts =  urlPhoto.split("/")
+        const name = parts[parts.length - 1]
+
+        try {
+            const imageResponse = await fetch(getPhotoUrl)
+            const imageBlob = await imageResponse.blob()
+            const imageUrlObject = URL.createObjectURL(imageBlob)
+      
+            const link = document.createElement('a');
+            link.href = imageUrlObject;
+            link.download = `${name}.jpg`
+            document.body.appendChild(link)
+            link.click();
+            document.body.removeChild(link)
+            // Clean up the URL.createObjectURL to avoid memory leaks
+            URL.revokeObjectURL(imageUrlObject)
+            toast.success('Image copied')
+          } catch (error) {
+            console.error('Error downloading the image:', error)
+            toast.error('Error downloading the image')
+          }
     }
 
     return( 

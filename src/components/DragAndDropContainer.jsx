@@ -1,9 +1,9 @@
 import arrowImg from '/images/exit.svg'
 import { DarkModeContext } from "../context/DarkMode"
 import { LoadStateContext } from "../context/LoadState"
-import { useContext,useEffect,useState } from 'react'
-import { useDropzone } from 'react-dropzone';
-import { postImg } from '../services/postImg';
+import { useContext } from 'react'
+import { useDropzone } from 'react-dropzone'
+import { postImg } from '../services/postImg'
 
 export function DragAndDropContainer() {
 
@@ -15,19 +15,10 @@ export function DragAndDropContainer() {
     const onDrop = (acceptedFiles) => {
       changeLoading(true)
       const file = acceptedFiles[0]
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        handleUpload(reader.result)
-      }
-      reader.readAsDataURL(file)
-    }
+      file ? postToDb(file) : changeLoading("")
+     }
 
     const { getRootProps, getInputProps } = useDropzone({ onDrop })
-    
-    const handleUpload = async (selectedFile) => {
-      if (!selectedFile) return
-      postToDb(selectedFile)
-    }
 
     return (
         <section 
