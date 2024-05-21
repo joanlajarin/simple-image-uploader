@@ -17,7 +17,7 @@ export function UploadSucces() {
     }
     const downloadImg = async () => {
 
-        const getPhotoUrl = `http://localhost:5000/photo?url=${encodeURIComponent(urlPhoto)}`
+        const getPhotoUrl = `https://simple-image-uploader.onrender.com/photo?url=${encodeURIComponent(urlPhoto)}`
           
         const parts =  urlPhoto.split("/")
         const name = parts[parts.length - 1]
