@@ -10,8 +10,8 @@ export function postImg() {
 
     const postToDb = (file) => {
         changeLoading(true)
-        const url = 'http://localhost:5000/upload'
-        //  const url = 'https://code-sharing-jlr.onrender.com/api/code'
+        //const url = 'http://localhost:5000/upload'
+        const url = 'https://simple-image-uploader.onrender.com/upload'
         const formData = new FormData()
         formData.append('file', file)
         fetch(url, {

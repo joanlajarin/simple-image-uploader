@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
+.env
 simple-image-uploader-1fa1e-firebase-adminsdk-jyxog-fbbb0939a8.json
 firebase.json
